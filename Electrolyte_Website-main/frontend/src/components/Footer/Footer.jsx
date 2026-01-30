@@ -7,8 +7,7 @@ export default function Footer() {
       <div className="footer-container">
         {/* Column 1 */}
         <div className="footer-col">
-          <ul>
-          </ul>
+          <ul></ul>
         </div>
 
         {/* Column 2 */}
@@ -64,6 +63,9 @@ export default function Footer() {
             </li>
             <li>
               <Link to="/contact">Request Facility Audit</Link>
+            </li>
+            <li>
+              <Link to="/admin/login">Admin Login</Link>
             </li>
           </ul>
         </div>

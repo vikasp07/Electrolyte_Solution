@@ -45,27 +45,37 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // Here you would typically send the data to your backend
       console.log("Form submitted:", formData);
 
-      // Simulating API call
-      setTimeout(() => {
-        setSubmitStatus("success");
-        setFormData({
-          firstName: "",
-          lastName: "",
-          email: "",
-          phone: "",
-          company: "",
-          subject: "",
-          message: "",
-        });
+      // Send data to backend API
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-        // Reset status after 5 seconds
-        setTimeout(() => setSubmitStatus(null), 5000);
-        setIsSubmitting(false);
-      }, 1000);
+      if (!response.ok) {
+        throw new Error("Failed to submit form");
+      }
+
+      setSubmitStatus("success");
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        company: "",
+        subject: "",
+        message: "",
+      });
+
+      // Reset status after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000);
+      setIsSubmitting(false);
     } catch (error) {
+      console.error("Error submitting form:", error);
       setSubmitStatus("error");
       setIsSubmitting(false);
     }

@@ -19,6 +19,7 @@ import "./App.css";
 import AdminLogin from "./admin/pages/Login";
 import AdminBlogList from "./admin/pages/BlogList";
 import AdminBlogEditor from "./admin/pages/BlogEditor";
+import AdminContactSubmissions from "./admin/pages/ContactSubmissions";
 import { ProtectedRoute } from "./admin/routes";
 
 // Component to handle scroll to top on route change
@@ -71,6 +72,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <AdminBlogEditor />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/contact-submissions"
+              element={
+                <ProtectedRoute>
+                  <AdminContactSubmissions />
                 </ProtectedRoute>
               }
             />
