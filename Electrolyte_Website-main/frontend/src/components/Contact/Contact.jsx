@@ -48,7 +48,7 @@ const Contact = () => {
       console.log("Form submitted:", formData);
 
       // Send data to backend API
-      const response = await fetch("/api/contact", {
+      const response = await fetch("https://electrolyte-website.onrender.com/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

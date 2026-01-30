@@ -1,7 +1,7 @@
 // admin/api/client.js
 // Minimal fetch wrapper that injects JWT token from localStorage
 
-const API_BASE = "/api";
+const API_BASE = "https://electrolyte-website.onrender.com/api";
 
 function getToken() {
   try {
