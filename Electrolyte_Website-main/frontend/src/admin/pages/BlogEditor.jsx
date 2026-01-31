@@ -1,5 +1,5 @@
 // admin/pages/BlogEditor.jsx
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../components/Layout";
 import RichTextEditor from "../components/RichTextEditor";
@@ -68,14 +68,16 @@ const BlogEditor = () => {
     }
   };
 
-  useEffect(() => { loadExisting(); }, [id]);
+  useEffect(() => { 
+    loadExisting(); 
+  }, [id, isEdit]);
 
   // Auto-generate slug if empty when title changes
   useEffect(() => {
-    if (!isEdit && !slug) {
+    if (!isEdit && !slug && title) {
       setSlug(slugify(title));
     }
-  }, [title]);
+  }, [title, isEdit, slug]);
 
   const onImageChange = (e) => {
     const file = e.target.files?.[0];

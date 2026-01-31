@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import "../styles/HeroBanner.css";
 
 const HeroBanner = ({ scrollY }) => {
@@ -6,11 +6,12 @@ const HeroBanner = ({ scrollY }) => {
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const rotatingWords = [
+  // Move rotatingWords to useMemo to fix exhaustive-deps warning
+  const rotatingWords = useMemo(() => [
     "LED Video Walls",
     "Industrial Electronics",
     "Device Refurbishment",
-  ];
+  ], []);
 
   useEffect(() => {
     const currentWord = rotatingWords[rotatingWordIndex];

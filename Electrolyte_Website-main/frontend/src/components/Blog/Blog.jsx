@@ -26,7 +26,8 @@ const BlogList = () => {
       setLoading(true);
       setError("");
       try {
-        const res = await fetch("https://electrolyte-website.onrender.com/api/blogs");
+        const API_BASE = process.env.REACT_APP_API_BASE_URL || "https://electrolyte-website.onrender.com/api";
+        const res = await fetch(`${API_BASE}/blogs`);
         if (!res.ok) {
           throw new Error(`HTTP ${res.status}`);
         }
@@ -134,7 +135,8 @@ const BlogPost = () => {
       setLoading(true);
       setError("");
       try {
-        const res = await fetch(`https://electrolyte-website.onrender.com/api/blogs/${encodeURIComponent(slug)}`);
+        const API_BASE = process.env.REACT_APP_API_BASE_URL || "https://electrolyte-website.onrender.com/api";
+        const res = await fetch(`${API_BASE}/blogs/${encodeURIComponent(slug)}`);
         if (res.status === 404) {
           setBlog(null);
         } else if (!res.ok) {
@@ -143,7 +145,7 @@ const BlogPost = () => {
           const data = await res.json();
           setBlog(data);
         }
-        const listRes = await fetch("https://electrolyte-website.onrender.com/api/blogs");
+        const listRes = await fetch(`${API_BASE}/blogs`);
         if (!listRes.ok) {
           throw new Error(`HTTP ${listRes.status}`);
         }

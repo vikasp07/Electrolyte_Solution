@@ -2,16 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./Certifications.css";
 
 const Certifications = () => {
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const certificates = [
     {
       id: 1,

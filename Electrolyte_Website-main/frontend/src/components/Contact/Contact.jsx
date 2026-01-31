@@ -48,7 +48,8 @@ const Contact = () => {
       console.log("Form submitted:", formData);
 
       // Send data to backend API
-      const response = await fetch("https://electrolyte-website.onrender.com/api/contact", {
+      const API_BASE = process.env.REACT_APP_API_BASE_URL || "https://electrolyte-website.onrender.com/api";
+      const response = await fetch(`${API_BASE}/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -80,20 +81,6 @@ const Contact = () => {
       setIsSubmitting(false);
     }
   };
-
-  const copyToClipboard = async (text) => {
-    try {
-      await navigator.clipboard.writeText(text);
-      alert("Copied: " + text);
-    } catch (err) {
-      alert("Copy failed.");
-    }
-  };
-
-  const vcardHref = "/contact.vcf";
-  const scheduleHref = `mailto:${COMPANY.email}?subject=Schedule%20Meeting&body=Hi%20${COMPANY.name}%2C%0A%0AI%20would%20like%20to%20schedule%20a%20meeting.`;
-  const linkedInHref = "https://www.linkedin.com/company/electrolyte-solutions/";
-  const chatHref = `https://wa.me/${COMPANY.whatsapp.replace(/\D/g, "")}`;
 
   return (
     <main id="contact-main" className="site-main">

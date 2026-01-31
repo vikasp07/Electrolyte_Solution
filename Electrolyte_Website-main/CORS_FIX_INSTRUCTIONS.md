@@ -17,7 +17,8 @@
 **Allowed Origins:**
 - `http://localhost:3000` (development)
 - `http://localhost:3001` (alternative dev port)
-- Environment variables: `FRONTEND_URL_DEV` and `FRONTEND_URL_PROD`
+- `https://refactored-umbrella-pjqrvww49gwj3rwpp-3000.app.github.dev` (GitHub Codespaces)
+- Environment variables: `FRONTEND_URL_DEV`, `FRONTEND_URL_CODESPACES`, and `FRONTEND_URL_PROD`
 - Add your production frontend URL in the `allowedOrigins` array
 
 **CORS Options:**
@@ -39,6 +40,7 @@
 **Added:**
 ```env
 FRONTEND_URL_DEV = http://localhost:3000
+FRONTEND_URL_CODESPACES = https://refactored-umbrella-pjqrvww49gwj3rwpp-3000.app.github.dev
 FRONTEND_URL_PROD = https://your-production-domain.com
 ```
 
@@ -64,7 +66,9 @@ const allowedOrigins = [
   "http://localhost:3000",
   "http://localhost:3001", 
   process.env.FRONTEND_URL_DEV,
+  process.env.FRONTEND_URL_CODESPACES,
   process.env.FRONTEND_URL_PROD,
+  "https://refactored-umbrella-pjqrvww49gwj3rwpp-3000.app.github.dev", // GitHub Codespaces
   "https://your-actual-production-domain.com", // ← UPDATE THIS
   "https://electrolyte-solutions.netlify.app", // If using Netlify
   "https://electrolyte-solutions.vercel.app",  // If using Vercel
@@ -77,6 +81,7 @@ Go to your Render dashboard and add these environment variables:
 
 ```
 FRONTEND_URL_DEV = http://localhost:3000
+FRONTEND_URL_CODESPACES = https://refactored-umbrella-pjqrvww49gwj3rwpp-3000.app.github.dev
 FRONTEND_URL_PROD = https://your-production-domain.com
 ```
 

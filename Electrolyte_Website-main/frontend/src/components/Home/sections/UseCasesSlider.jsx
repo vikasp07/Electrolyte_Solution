@@ -1,15 +1,14 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/UseCasesSlider.css";
 
 const UseCasesSlider = () => {
   const sliderRef = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [autoPlay, setAutoPlay] = useState(true);
   const navigate = useNavigate();
 
   // Blog posts data - keeping the same UI structure
-  const blogPosts = [
+  const blogPosts = useMemo(() => [
     {
       id: 1,
       title:
@@ -62,17 +61,16 @@ const UseCasesSlider = () => {
       link: "/blog/5",
       tagline: "Physical Security",
     },
-  ];
+  ], []);
 
+  // Auto-play functionality
   useEffect(() => {
-    if (!autoPlay) return;
-
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % blogPosts.length);
     }, 6000); // autoplay stays 6 seconds
 
     return () => clearInterval(interval);
-  }, [autoPlay, blogPosts.length]);
+  }, [blogPosts.length]);
 
   const handleBlogClick = (link) => {
     navigate(link);

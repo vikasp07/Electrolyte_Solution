@@ -19,7 +19,10 @@ const allowedOrigins = [
   "http://localhost:3000",
   "http://localhost:3001", 
   process.env.FRONTEND_URL_DEV,
+  process.env.FRONTEND_URL_CODESPACES,
   process.env.FRONTEND_URL_PROD,
+  // GitHub Codespaces origin (hardcoded as backup)
+  "https://refactored-umbrella-pjqrvww49gwj3rwpp-3000.app.github.dev",
   // Add your production frontend URL here
   "https://your-production-domain.com",
   "https://electrolyte-solutions.netlify.app", // Example if using Netlify
