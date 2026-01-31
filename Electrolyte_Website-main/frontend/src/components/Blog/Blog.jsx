@@ -126,14 +126,9 @@ const BlogPost = () => {
   const navigate = useNavigate();
   const [blog, setBlog] = useState(null);
   const [allBlogs, setAllBlogs] = useState([]);
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [copySuccess, setCopySuccess] = useState(false);
 
   useEffect(() => {
     const load = async () => {
-      setLoading(true);
-      setError("");
       try {
         const API_BASE = process.env.REACT_APP_API_BASE_URL || "https://electrolyte-website.onrender.com/api";
         const res = await fetch(`${API_BASE}/blogs/${encodeURIComponent(slug)}`);
@@ -153,9 +148,6 @@ const BlogPost = () => {
         setAllBlogs(Array.isArray(listData) ? listData : []);
       } catch (e) {
         console.error("Failed to load blog:", e);
-        setError("Failed to load blog");
-      } finally {
-        setLoading(false);
       }
       window.scrollTo(0, 0);
     };
@@ -163,10 +155,7 @@ const BlogPost = () => {
   }, [slug]);
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(window.location.href).then(() => {
-      setCopySuccess(true);
-      setTimeout(() => setCopySuccess(false), 2000);
-    });
+    navigator.clipboard.writeText(window.location.href);
   };
 
   if (!blog) {

@@ -1,87 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Contact.css";
 import PcbRepairForm from "./PcbRepairForm";
 
-// contact constants
-const COMPANY = {
-  name: "Electrolyte Solutions",
-  phonePrimary: "+919892686600",
-  phoneSecondary: "+919029352208",
-  email: "contact@electrolytesolin.com",
-  whatsapp: "+919029352208",
-  website: "https://www.electrolytesolin.com",
-  addressLines: [
-    "Unit No. 11, 3rd Floor, B-Wing",
-    "Gami Industrial Park, ITC",
-    "Industrial Area Pawane, MIDC",
-    "Navi Mumbai - 400 710",
-  ],
-};
-
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    company: "",
-    subject: "",
-    message: "",
-  });
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      console.log("Form submitted:", formData);
-
-      // Send data to backend API
-      const API_BASE = process.env.REACT_APP_API_BASE_URL || "https://electrolyte-website.onrender.com/api";
-      const response = await fetch(`${API_BASE}/contact`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to submit form");
-      }
-
-      setSubmitStatus("success");
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        company: "",
-        subject: "",
-        message: "",
-      });
-
-      // Reset status after 5 seconds
-      setTimeout(() => setSubmitStatus(null), 5000);
-      setIsSubmitting(false);
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      setSubmitStatus("error");
-      setIsSubmitting(false);
-    }
-  };
-
   return (
     <main id="contact-main" className="site-main">
       <article className="contact-page-content">
@@ -116,8 +37,6 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
-
-
             </section>
 
             {/* Contact Information & Form Section */}
