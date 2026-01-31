@@ -24,7 +24,18 @@ const API_ORIGIN = "https://electrolyte-website.onrender.com";
 
 // Get API base URL
 const getApiBase = () => {
-  return "https://electrolyte-website.onrender.com/api";
+  // In production build, use the production API
+  if (process.env.NODE_ENV === 'production') {
+    return "https://electrolyte-website.onrender.com/api";
+  }
+  
+  // In development, check if we have a custom API URL
+  if (process.env.REACT_APP_API_BASE_URL) {
+    return process.env.REACT_APP_API_BASE_URL;
+  }
+  
+  // Default to local backend
+  return "/api";
 };
 
 // Resolve relative image URLs safely

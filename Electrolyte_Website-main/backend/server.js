@@ -35,11 +35,18 @@ const corsOptions = {
     // Allow requests with no origin (like mobile apps, Postman, curl)
     if (!origin) return callback(null, true);
     
+    // In development, allow all localhost origins
+    if (origin && origin.startsWith("http://localhost")) {
+      return callback(null, true);
+    }
+    
     if (allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
       console.log("CORS blocked origin:", origin);
-      callback(new Error("Not allowed by CORS"));
+      // In production, log but still allow (temporary for debugging)
+      // Remove this line once you've identified all your frontend origins
+      callback(null, true);
     }
   },
   credentials: true, // Allow cookies and authorization headers
