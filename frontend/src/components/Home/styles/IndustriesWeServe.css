@@ -1,0 +1,170 @@
+/* Industries We Serve Section */
+
+.iws-section {
+  padding: 80px 0;
+  background: #f8fafc;
+}
+
+.iws-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header Styles */
+.iws-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.iws-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e3a5f;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.iws-title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #2563eb, #1e3a5f);
+  margin: 16px auto 0;
+  border-radius: 2px;
+}
+
+.iws-subtitle {
+  font-size: 1.2rem;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Grid Layout */
+.iws-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* Card Styles */
+.iws-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 35px 24px;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.iws-card:hover {
+  border-color: #2563eb;
+  box-shadow: 0 15px 40px rgba(37, 99, 235, 0.12);
+  transform: translateY(-5px);
+}
+
+/* Icon Styles */
+.iws-card-icon {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(
+    135deg,
+    rgba(37, 99, 235, 0.1) 0%,
+    rgba(30, 58, 95, 0.1) 100%
+  );
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  transition: all 0.3s ease;
+}
+
+.iws-card:hover .iws-card-icon {
+  background: linear-gradient(135deg, #2563eb 0%, #1e3a5f 100%);
+}
+
+.iws-card-icon i {
+  font-size: 32px;
+  color: #2563eb;
+  transition: color 0.3s ease;
+}
+
+.iws-card:hover .iws-card-icon i {
+  color: #ffffff;
+}
+
+/* Card Title */
+.iws-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e3a5f;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+  .iws-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .iws-section {
+    padding: 60px 0;
+  }
+
+  .iws-header {
+    margin-bottom: 40px;
+  }
+
+  .iws-title {
+    font-size: 2rem;
+  }
+
+  .iws-subtitle {
+    font-size: 1rem;
+  }
+
+  .iws-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .iws-card {
+    padding: 30px 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .iws-title {
+    font-size: 1.75rem;
+  }
+
+  .iws-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .iws-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-align: left;
+    padding: 20px 24px;
+  }
+
+  .iws-card-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  .iws-card-icon i {
+    font-size: 24px;
+  }
+}

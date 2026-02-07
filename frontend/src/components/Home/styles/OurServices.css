@@ -1,0 +1,350 @@
+/* OurServices.css - Our Services Section Styles */
+
+.our-services-section {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    var(--primary-dark) 0%,
+    var(--bg-dark) 100%
+  );
+  padding: 80px 60px;
+  overflow: hidden;
+}
+
+.our-services-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.our-services-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.our-services-title {
+  font-size: 2.5em;
+  font-weight: 600;
+  color: var(--light-color);
+  font-family: var(--heading-font);
+  letter-spacing: -1px;
+  margin: 0;
+}
+
+/* Slider Wrapper */
+.our-services-slider-wrapper {
+  position: relative;
+  overflow: visible;
+}
+
+.our-services-slider {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(300px, 1fr);
+  gap: 30px;
+  padding: 20px 0;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  transition: all 1s ease-in-out;
+}
+
+/* Remove scrollbar styling for modern look */
+.our-services-slider::-webkit-scrollbar {
+  height: 0;
+}
+
+.our-services-slider {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Service Card */
+.service-card {
+  position: relative;
+  background: rgba(255, 212, 0, 0.05);
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: var(--transition);
+  scroll-snap-align: center;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 212, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  min-height: 350px;
+}
+
+.service-card:hover {
+  background: rgba(255, 212, 0, 0.1);
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(255, 212, 0, 0.15);
+  border-color: rgba(255, 212, 0, 0.35);
+}
+
+.service-card-link {
+  position: relative;
+  flex: 1;
+  display: block;
+  text-decoration: none;
+}
+
+.service-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 212, 0, 0.1),
+    rgba(255, 212, 0, 0.05)
+  );
+  flex-shrink: 0;
+}
+
+.service-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: var(--transition);
+  display: block;
+}
+
+.service-card:hover .service-image {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+.service-icon {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 2em;
+  color: var(--accent-color);
+  transition: var(--transition);
+  z-index: 3;
+}
+
+.service-card:hover .service-icon {
+  transform: translateX(5px) scale(1.15);
+  color: var(--alternate-color);
+}
+
+.service-title {
+  position: relative;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: var(--light-color);
+  margin: 0;
+  padding: 20px 15px;
+  font-family: var(--heading-font);
+  border-top: 1px solid rgba(255, 212, 0, 0.15);
+  transition: var(--transition);
+}
+
+.service-title a {
+  color: var(--light-color);
+  text-decoration: none;
+  display: block;
+  transition: var(--transition);
+  line-height: 1.4;
+}
+
+.service-title:hover a {
+  color: var(--accent-color);
+}
+
+.service-card:hover .service-title {
+  background: rgba(255, 212, 0, 0.08);
+}
+
+/* Navigation Buttons */
+.service-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 212, 0, 0.1);
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  font-size: 1.5em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: var(--transition);
+  padding: 0;
+  animation: rotate 6s linear infinite;
+}
+
+.service-nav-btn img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(83%) sepia(46%) saturate(1000%)
+    hue-rotate(358deg) brightness(103%) contrast(106%);
+  transition: var(--transition);
+}
+
+.service-nav-btn:hover {
+  background: var(--primary);
+  color: var(--bg-dark);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.service-nav-btn:hover img {
+  filter: brightness(0) saturate(100%);
+}
+
+.service-nav-prev {
+  left: 0;
+  transform: translateY(-50%) translateX(-100%);
+}
+
+.service-nav-next {
+  right: 0;
+  transform: translateY(-50%) translateX(100%);
+}
+
+.service-nav-btn:hover.service-nav-prev {
+  transform: translateY(-50%) translateX(-100%) scale(1.1);
+}
+
+.service-nav-btn:hover.service-nav-next {
+  transform: translateY(-50%) translateX(100%) scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .our-services-section {
+    padding: 60px 40px;
+  }
+
+  .our-services-title {
+    font-size: 2.2em;
+  }
+
+  .our-services-slider {
+    grid-auto-columns: minmax(280px, 1fr);
+    gap: 25px;
+  }
+
+  .service-card {
+    min-height: 320px;
+  }
+}
+
+@media (max-width: 991px) {
+  .our-services-section {
+    padding: 50px 30px;
+  }
+
+  .our-services-title {
+    font-size: 1.8em;
+  }
+
+  .our-services-slider {
+    grid-auto-columns: minmax(250px, 1fr);
+    gap: 20px;
+  }
+
+  .service-card {
+    min-height: 300px;
+  }
+
+  .service-image-wrapper {
+    height: 180px;
+  }
+
+  .service-title {
+    font-size: 1.1em;
+    padding: 15px;
+  }
+
+  .service-icon {
+    font-size: 1.7em;
+  }
+}
+
+@media (max-width: 768px) {
+  .our-services-section {
+    padding: 40px 20px;
+  }
+
+  .our-services-title {
+    font-size: 1.5em;
+  }
+
+  .our-services-slider {
+    grid-auto-columns: minmax(240px, 1fr);
+    gap: 15px;
+  }
+
+  .service-card {
+    min-height: 280px;
+  }
+
+  .service-image-wrapper {
+    height: 160px;
+  }
+
+  .service-title {
+    font-size: 1em;
+    padding: 12px;
+  }
+
+  .service-icon {
+    font-size: 1.5em;
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .service-nav-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2em;
+  }
+}
+
+@media (max-width: 576px) {
+  .our-services-section {
+    padding: 30px 15px;
+  }
+
+  .our-services-title {
+    font-size: 1.3em;
+  }
+
+  .our-services-slider {
+    grid-auto-columns: minmax(200px, 1fr);
+    gap: 12px;
+  }
+
+  .service-card {
+    min-height: 250px;
+  }
+
+  .service-image-wrapper {
+    height: 140px;
+  }
+
+  .service-title {
+    font-size: 0.9em;
+    padding: 10px;
+  }
+
+  .service-icon {
+    font-size: 1.3em;
+  }
+
+  .service-nav-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 1em;
+  }
+}

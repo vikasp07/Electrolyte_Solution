@@ -1,0 +1,145 @@
+/* PcbRepairForm.css */
+
+.pcb-section {
+  padding: 80px 0;
+  background: var(--bg-dark);
+  color: var(--text-heading);
+}
+
+.pcb-title {
+  font-size: 2.5em;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 10px;
+  color: var(--text-heading);
+}
+
+.pcb-subtitle {
+  font-size: 1.1em;
+  text-align: center;
+  color: var(--text-muted);
+  margin-bottom: 50px;
+}
+
+.pcb-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.pcb-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pcb-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--text-body);
+}
+
+.pcb-form label span {
+  color: var(--primary);
+}
+
+.pcb-form input,
+.pcb-form select,
+.pcb-form textarea {
+  padding: 12px 16px;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  background: rgba(31, 41, 55, 0.6);
+  color: var(--text-heading);
+  font-size: 1em;
+}
+
+.pcb-form input:focus,
+.pcb-form select:focus,
+.pcb-form textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: rgba(31, 41, 55, 0.9);
+}
+
+.pcb-form button {
+  padding: 14px 24px;
+  background: var(--primary);
+  color: var(--bg-dark);
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.pcb-form button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.pcb-info {
+  background: rgba(31, 41, 55, 0.6);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 40px;
+}
+
+.pcb-info h3 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  color: var(--text-heading);
+}
+
+.pcb-info p {
+  margin-bottom: 20px;
+  color: var(--text-body);
+  line-height: 1.6;
+}
+
+.pcb-why h4 {
+  font-size: 1.3em;
+  margin-bottom: 15px;
+  color: var(--text-heading);
+}
+
+.pcb-why ul {
+  list-style: none;
+  padding: 0;
+}
+
+.pcb-why li {
+  margin-bottom: 10px;
+  color: var(--text-body);
+  font-size: 0.95em;
+}
+
+.pcb-why li:before {
+  content: "✓";
+  color: var(--primary);
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pcb-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .pcb-title {
+    font-size: 2em;
+  }
+
+  .pcb-info {
+    padding: 30px;
+  }
+}

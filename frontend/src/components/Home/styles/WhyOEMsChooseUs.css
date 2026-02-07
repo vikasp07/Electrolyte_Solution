@@ -1,0 +1,267 @@
+.wocu-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #111827 0%, #111827 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.wocu-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.5;
+}
+
+.wocu-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Header Styles */
+.wocu-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.wocu-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.wocu-title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #60a5fa, #2563eb);
+  margin: 16px auto 0;
+  border-radius: 2px;
+}
+
+.wocu-subtitle {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+/* Grid Layout */
+.wocu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+/* Card Styles */
+.wocu-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.wocu-card-inner {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 35px 30px;
+  text-align: center;
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.wocu-card:hover .wocu-card-inner {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(96, 165, 250, 0.3);
+  transform: translateY(-5px);
+}
+
+.wocu-card-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(
+    circle,
+    rgba(37, 99, 235, 0.4) 0%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+.wocu-card:hover .wocu-card-glow {
+  opacity: 1;
+}
+
+/* Icon Styles */
+.wocu-card-icon {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  transition: all 0.4s ease;
+}
+
+.wocu-card:hover .wocu-card-icon {
+  transform: scale(1.1);
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
+}
+
+.wocu-card-icon i {
+  font-size: 32px;
+  color: #ffffff;
+}
+
+/* Card Title */
+.wocu-card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+/* Card Description */
+.wocu-card-description {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Stats Section */
+.wocu-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+}
+
+.wocu-stat {
+  text-align: center;
+}
+
+.wocu-stat-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #60a5fa;
+  line-height: 1.2;
+}
+
+.wocu-stat-label {
+  display: block;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.wocu-stat-divider {
+  width: 1px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 992px) {
+  .wocu-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wocu-stats {
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 30px;
+  }
+
+  .wocu-stat-divider {
+    display: none;
+  }
+
+  .wocu-stat {
+    flex: 1 1 40%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wocu-section {
+    padding: 60px 0;
+  }
+
+  .wocu-header {
+    margin-bottom: 40px;
+  }
+
+  .wocu-title {
+    font-size: 2rem;
+  }
+
+  .wocu-subtitle {
+    font-size: 1rem;
+  }
+
+  .wocu-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .wocu-card-inner {
+    padding: 30px 24px;
+  }
+
+  .wocu-stats {
+    gap: 20px;
+    padding: 24px;
+  }
+
+  .wocu-stat-number {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .wocu-title {
+    font-size: 1.75rem;
+  }
+
+  .wocu-card-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .wocu-card-icon i {
+    font-size: 28px;
+  }
+
+  .wocu-stat {
+    flex: 1 1 100%;
+  }
+
+  .wocu-stat-number {
+    font-size: 1.75rem;
+  }
+}

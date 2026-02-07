@@ -1,0 +1,272 @@
+/* MissionVisionValues.css - MVV Section Styles */
+
+.mvv-section {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  padding: 80px 60px;
+  overflow: hidden;
+}
+
+.mvv-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: 0;
+  opacity: 0.3;
+}
+
+.mvv-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.mvv-header {
+  margin-bottom: 30px;
+  grid-column: 1 / -1;
+}
+
+.mvv-title {
+  font-size: 2.5em;
+  font-weight: 600;
+  color: var(--light-color);
+  font-family: var(--heading-font);
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+}
+
+.mvv-description {
+  display: grid;
+  grid-template-columns: 7fr 1fr 4fr;
+  gap: 30px;
+  align-items: flex-start;
+  margin-bottom: 60px;
+}
+
+.mvv-description p {
+  grid-column: 1;
+  font-size: 1.1em;
+  line-height: 1.8;
+  color: var(--light-color);
+  margin: 0;
+}
+
+.mvv-description .btn-secondary {
+  grid-column: 3;
+  justify-self: flex-end;
+  margin-top: 10px;
+}
+
+/* MVV Cards Container */
+.mvv-cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.mvv-card {
+  position: relative;
+  background: rgba(255, 212, 0, 0.05);
+  border-radius: 25px;
+  padding: 40px 30px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 212, 0, 0.2);
+  transition: var(--transition);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.mvv-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 212, 0, 0.15),
+    transparent
+  );
+  transition: left 0.5s ease;
+  z-index: 1;
+}
+
+.mvv-card:hover::before {
+  left: 100%;
+}
+
+.mvv-card:hover {
+  background: rgba(255, 212, 0, 0.1);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(255, 212, 0, 0.2);
+  border-color: rgba(255, 212, 0, 0.35);
+}
+
+.mvv-card-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+.mvv-card-image {
+  margin-bottom: 25px;
+  z-index: 3;
+  position: relative;
+}
+
+.mvv-card-image img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  transition: var(--transition);
+}
+
+.mvv-card:hover .mvv-card-image img {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.mvv-card-content {
+  z-index: 3;
+  position: relative;
+}
+
+.mvv-card-title {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--light-color);
+  margin: 0 0 15px 0;
+  font-family: var(--heading-font);
+}
+
+.mvv-card-description {
+  font-size: 1em;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 15px 0 0 0;
+}
+
+.mvv-card-description span {
+  display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .mvv-section {
+    padding: 60px 40px;
+  }
+
+  .mvv-title {
+    font-size: 2.2em;
+  }
+
+  .mvv-cards-container {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 991px) {
+  .mvv-section {
+    padding: 50px 30px;
+  }
+
+  .mvv-description {
+    grid-template-columns: 1fr;
+  }
+
+  .mvv-description p {
+    grid-column: 1;
+  }
+
+  .mvv-description .btn-secondary {
+    grid-column: 1;
+    justify-self: flex-start;
+  }
+
+  .mvv-cards-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  .mvv-title {
+    font-size: 1.8em;
+  }
+}
+
+@media (max-width: 768px) {
+  .mvv-section {
+    padding: 40px 20px;
+  }
+
+  .mvv-title {
+    font-size: 1.5em;
+  }
+
+  .mvv-description p {
+    font-size: 0.95em;
+  }
+
+  .mvv-cards-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .mvv-card {
+    padding: 30px 20px;
+  }
+
+  .mvv-card-title {
+    font-size: 1.2em;
+  }
+
+  .mvv-card-description {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 576px) {
+  .mvv-section {
+    padding: 30px 15px;
+  }
+
+  .mvv-title {
+    font-size: 1.3em;
+  }
+
+  .mvv-description p {
+    font-size: 0.9em;
+  }
+
+  .mvv-card {
+    padding: 20px 15px;
+  }
+
+  .mvv-card-image img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .mvv-card-title {
+    font-size: 1em;
+  }
+
+  .mvv-card-description {
+    font-size: 0.85em;
+  }
+}
