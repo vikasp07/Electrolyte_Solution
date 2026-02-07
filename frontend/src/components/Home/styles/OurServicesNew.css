@@ -1,0 +1,259 @@
+.osn-section {
+  padding: 80px 0;
+  background: #ffffff;
+}
+
+.osn-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header Styles */
+.osn-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.osn-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e3a5f;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.osn-title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #2563eb, #1e3a5f);
+  margin: 16px auto 0;
+  border-radius: 2px;
+}
+
+.osn-subtitle {
+  font-size: 1.2rem;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Cards Container */
+.osn-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+/* Card Styles */
+.osn-card {
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+  border-radius: 20px;
+  padding: 40px 30px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+  transition: all 0.4s ease;
+  border: 1px solid #e2e8f0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.osn-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+.osn-card:hover::before {
+  opacity: 1;
+}
+
+.osn-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 60px rgba(37, 99, 235, 0.2);
+}
+
+/* Icon Wrapper */
+.osn-card-icon-wrapper {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 24px;
+}
+
+.osn-card-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #2563eb 0%, #1e3a5f 100%);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  transition: all 0.4s ease;
+}
+
+.osn-card:hover .osn-card-icon {
+  background: #ffffff;
+}
+
+.osn-card-icon i {
+  font-size: 36px;
+  color: #ffffff;
+  transition: color 0.4s ease;
+}
+
+.osn-card:hover .osn-card-icon i {
+  color: #1e3a5f;
+}
+
+/* Card Content */
+.osn-card-content {
+  position: relative;
+  z-index: 1;
+}
+
+.osn-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e3a5f;
+  margin-bottom: 16px;
+  line-height: 1.4;
+  transition: color 0.4s ease;
+}
+
+.osn-card:hover .osn-card-title {
+  color: #ffffff;
+}
+
+.osn-card-description {
+  font-size: 0.95rem;
+  color: #64748b;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  transition: color 0.4s ease;
+}
+
+.osn-card:hover .osn-card-description {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Highlight Tags */
+.osn-card-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.osn-highlight-tag {
+  background: rgba(37, 99, 235, 0.1);
+  color: #2563eb;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.4s ease;
+}
+
+.osn-card:hover .osn-highlight-tag {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+/* CTA Section */
+.osn-cta {
+  text-align: center;
+}
+
+.osn-cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #2563eb 0%, #1e3a5f 100%);
+  color: #ffffff;
+  padding: 16px 40px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+}
+
+.osn-cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(37, 99, 235, 0.4);
+}
+
+.osn-cta-button i {
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+.osn-cta-button:hover i {
+  transform: translateX(5px);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 992px) {
+  .osn-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .osn-section {
+    padding: 60px 0;
+  }
+
+  .osn-header {
+    margin-bottom: 40px;
+  }
+
+  .osn-title {
+    font-size: 2rem;
+  }
+
+  .osn-subtitle {
+    font-size: 1rem;
+  }
+
+  .osn-cards {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .osn-card {
+    padding: 30px 24px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .osn-title {
+    font-size: 1.75rem;
+  }
+
+  .osn-card-icon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .osn-card-icon i {
+    font-size: 30px;
+  }
+
+  .osn-cta-button {
+    padding: 14px 32px;
+    font-size: 1rem;
+  }
+}

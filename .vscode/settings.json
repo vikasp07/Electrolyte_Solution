@@ -1,2 +1,8 @@
 {
+<<<<<<< HEAD
+=======
+    "javascript.autoClosingTags": false,
+    "python-envs.defaultEnvManager": "ms-python.python:system",
+    "python-envs.pythonProjects": []
+>>>>>>> ac302e350b6c4a7f0dde71e3f8419ef354771c24
 }

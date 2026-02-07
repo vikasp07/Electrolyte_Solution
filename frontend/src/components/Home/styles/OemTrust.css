@@ -1,0 +1,344 @@
+/* OemTrust.css - OEM Trust Section Styles */
+
+:root {
+  --oem-primary: #FFD400;
+  --oem-dark: #111827;
+  --oem-light: #111827;
+  --oem-accent: #D5FFF8;
+  --oem-text: #FFFFFF;
+  --oem-text-secondary: #9CA3AF;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  position: relative;
+  background: linear-gradient(135deg, var(--oem-dark) 0%, #111827 100%);
+  padding: 80px 60px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero h1 {
+  font-size: 3.2em;
+  font-weight: 700;
+  color: var(--oem-text);
+  margin: 0 0 20px 0;
+  line-height: 1.2;
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -1px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 br {
+  display: block;
+  margin: 5px 0;
+}
+
+.hero p {
+  font-size: 1.3em;
+  color: var(--oem-text-secondary);
+  margin: 0 0 40px 0;
+  line-height: 1.6;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin: 40px 0 30px 0;
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-primary {
+  background: var(--oem-primary);
+  color: var(--oem-dark);
+  border: 2px solid var(--oem-primary);
+}
+
+.btn-primary:hover {
+  background: transparent;
+  color: var(--oem-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(255, 212, 0, 0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--oem-text);
+  border: 2px solid var(--oem-text-secondary);
+}
+
+.btn-secondary:hover {
+  background: var(--oem-text);
+  color: var(--oem-dark);
+  transform: translateY(-2px);
+}
+
+.hero-badges {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  margin-top: 30px;
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+}
+
+.hero-badges span {
+  background: rgba(255, 212, 0, 0.1);
+  color: var(--oem-primary);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  font-weight: 600;
+  border: 1px solid rgba(255, 212, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.badge-icon {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+}
+
+/* ===== TRUST SECTION ===== */
+.trust-section {
+  background: linear-gradient(180deg, #111827 0%, var(--oem-dark) 100%);
+  padding: 80px 60px;
+  text-align: center;
+}
+
+.trust-section h2 {
+  font-size: 2.8em;
+  font-weight: 600;
+  color: var(--oem-text);
+  margin: 0 0 15px 0;
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -1px;
+}
+
+.trust-section .subtitle {
+  font-size: 1.2em;
+  color: var(--oem-text-secondary);
+  margin: 0 0 50px 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.trust-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 212, 0, 0.2);
+  border-radius: 12px;
+  padding: 30px 25px;
+  text-align: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.trust-card:hover {
+  background: rgba(255, 212, 0, 0.1);
+  border-color: var(--oem-primary);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(255, 212, 0, 0.2);
+}
+
+.trust-card .icon {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.trust-card .icon img {
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+.trust-card h3 {
+  font-size: 1.3em;
+  font-weight: 600;
+  color: var(--oem-text);
+  margin: 0 0 15px 0;
+}
+
+.trust-card p {
+  color: var(--oem-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  font-size: 0.95em;
+}
+
+/* ===== VALUE SECTION ===== */
+.value-section {
+  background: linear-gradient(180deg, var(--oem-dark) 0%, #111827 100%);
+  padding: 80px 60px;
+  text-align: center;
+}
+
+.value-section h2 {
+  font-size: 2.8em;
+  font-weight: 600;
+  color: var(--oem-text);
+  margin: 0 0 50px 0;
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -1px;
+}
+
+.value-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.value-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 212, 0, 0.2);
+  border-radius: 12px;
+  padding: 35px 30px;
+  text-align: left;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.value-card:hover {
+  background: rgba(255, 212, 0, 0.1);
+  border-color: var(--oem-primary);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(255, 212, 0, 0.2);
+}
+
+.value-card h3 {
+  font-size: 1.4em;
+  font-weight: 600;
+  color: var(--oem-text);
+  margin: 0 0 20px 0;
+}
+
+.value-card p {
+  color: var(--oem-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+  font-size: 1em;
+  text-align: justify;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1200px) {
+  .hero,
+  .trust-section,
+  .value-section {
+    padding: 60px 40px;
+  }
+
+  .hero h1 {
+    font-size: 2.8em;
+  }
+
+  .trust-section h2,
+  .value-section h2 {
+    font-size: 2.4em;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero,
+  .trust-section,
+  .value-section {
+    padding: 50px 20px;
+  }
+
+  .hero h1 {
+    font-size: 2.2em;
+  }
+
+  .hero p {
+    font-size: 1.1em;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-badges {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .trust-section h2,
+  .value-section h2 {
+    font-size: 2em;
+  }
+
+  .trust-grid,
+  .value-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .trust-card,
+  .value-card {
+    padding: 25px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.8em;
+  }
+
+  .hero p {
+    font-size: 1em;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 12px 25px;
+    font-size: 0.9em;
+  }
+
+  .trust-section h2,
+  .value-section h2 {
+    font-size: 1.8em;
+  }
+
+  .trust-card h3,
+  .value-card h3 {
+    font-size: 1.2em;
+  }
+}

@@ -1,0 +1,323 @@
+/* Home.css - Main Home Component Styles */
+
+:root {
+  /* Oregon Systems Dark Palette */
+  --primary: #ffd400;
+  --primary-dark: #111827;
+  --primary-light: #111827;
+  --primary-accent: #d5fff8;
+
+  --bg-dark: #111827;
+  --bg-light: #111827;
+  --bg-card: #111827;
+  --border-light: #374151;
+
+  --text-heading: #ffffff;
+  --text-body: #9ca3af;
+  --text-dark: #111827;
+  --text-muted: #6b7280;
+
+  --btn-primary: #ffd400;
+  --btn-primary-hover: #e6c400;
+  --btn-outline-border: #ffd400;
+  --btn-outline-hover-bg: #ccfff7;
+
+  /* aliases for existing styles */
+  --accent-color: var(--primary);
+  --alternate-color: var(--primary-dark);
+  --dark-color: var(--bg-dark);
+  --light-color: #FFFFFF;
+  --text-color: var(--text-dark);
+  --gray-text: var(--text-muted);
+  --transition: all 0.3s ease;
+}
+
+#home-main {
+  flex: 1;
+}
+
+.home-page-content {
+  width: 100%;
+  background: var(--dark-color);
+  color: var(--light-color);
+  font-family: var(--body-font);
+}
+
+.entry-content {
+  width: 100%;
+}
+
+.entry-content-inner {
+  width: 100%;
+}
+
+/* Utility Classes */
+.animate-in {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-bottom {
+  animation: slideUpFromBottom 0.5s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUpFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Button Styles */
+.btn-primary,
+.btn-secondary,
+.btn-outline,
+.btn-usecase {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 45px;
+  transition: var(--transition);
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background: linear-gradient(
+    90deg,
+    var(--accent-color) 0%,
+    var(--alternate-color) 100%
+  );
+  color: var(--light-color);
+  padding: 14px 32px;
+  font-size: 1.1em;
+}
+
+.btn-primary:hover {
+  background: var(--light-color);
+  color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: none;
+  color: var(--light-color);
+  padding: 8px 20px;
+  font-size: 0.95em;
+  border-bottom: 2px solid var(--light-color);
+}
+
+.btn-secondary:hover {
+  color: var(--accent-color);
+  border-bottom-color: var(--accent-color);
+}
+
+.btn-outline {
+  background: none;
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
+  padding: 12px 28px;
+  font-size: 0.95em;
+}
+
+.btn-outline:hover {
+  background: var(--accent-color);
+  color: var(--light-color);
+}
+
+.btn-usecase {
+  background: var(--accent-color);
+  color: var(--light-color);
+  padding: 10px 24px;
+  font-size: 0.95em;
+}
+
+.btn-usecase:hover {
+  background: var(--light-color);
+  color: var(--accent-color);
+}
+
+.btn-text {
+  display: inline-block;
+}
+
+/* Separator */
+.separator {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+  margin: 20px 0;
+}
+
+.separator-small {
+  margin: 10px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  :root {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 991px) {
+  :root {
+    font-size: 14px;
+  }
+
+  .animate-in {
+    animation-delay: 0s;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 576px) {
+  :root {
+    font-size: 12px;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-outline,
+  .btn-usecase {
+    padding: 10px 20px;
+    font-size: 0.9em;
+  }
+}
+/* --- Carousel / Slider styles --- */
+.carousel {
+  position: relative;
+  width: 100%;
+  margin: 32px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.carousel-viewport {
+  overflow: hidden;
+  flex: 1 1 auto;
+  border-radius: 12px;
+  /* prevent children from painting outside during transforms */
+  -webkit-mask-image: linear-gradient(
+    transparent,
+    black 2%,
+    black 98%,
+    transparent 100%
+  );
+}
+
+.carousel-track {
+  display: flex;
+  align-items: stretch;
+  will-change: transform;
+  padding: 16px;
+}
+
+.carousel-track.is-dragging {
+  cursor: grabbing;
+  /* while dragging, disable transitions (set in inline style from component too) */
+}
+
+/* Ensure hover visual changes don't run while dragging */
+.carousel-track:not(.is-dragging) .hover-scale:hover {
+  transform: translateY(-6px) scale(1.02);
+  transition: transform 180ms ease-out;
+}
+
+/* Item */
+.carousel-item {
+  background: var(--bg-card);
+  color: var(--text-heading);
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.45);
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 220ms ease;
+  backface-visibility: hidden;
+  transform-origin: center;
+}
+
+/* Buttons */
+.carousel-btn {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-heading);
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.carousel-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.carousel-btn.prev {
+  margin-left: 6px;
+}
+.carousel-btn.next {
+  margin-right: 6px;
+}
+
+/* small cards used in examples */
+.solution-card h3,
+.usecase-card h4 {
+  margin: 0 0 6px 0;
+  color: var(--primary);
+}
+.solution-card p,
+.usecase-card p {
+  margin: 0;
+  color: var(--text-body);
+}
+
+/* avoid text selection during drag */
+.carousel,
+.carousel * {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* responsive tweaks */
+@media (max-width: 768px) {
+  .carousel-btn {
+    width: 38px;
+    height: 38px;
+  }
+  .carousel-item {
+    padding: 14px;
+    min-height: 100px;
+  }
+}

@@ -1,0 +1,9 @@
+// admin/routes.jsx
+import React from "react";
+import { Navigate } from "react-router-dom";
+import { isAuthenticated } from "./state/auth";
+
+export const ProtectedRoute = ({ children }) => {
+  if (!isAuthenticated()) return <Navigate to="/admin/login" replace />;
+  return children;
+};
