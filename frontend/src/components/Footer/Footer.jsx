@@ -5,7 +5,28 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-container">
-        {/* Column 1 - Services */}
+        {/* Column 1 - Contact Info */}
+        <div className="footer-col footer-contact">
+          <h4>Contact Us</h4>
+          <ul>
+            <li className="footer-contact-item">
+              <i className="ri-building-line"></i>
+              <span>Electrolyte Solutions</span>
+            </li>
+            <li className="footer-contact-item">
+              <i className="ri-mail-line"></i>
+              <a href="mailto:info@electrolytesolutions.in">
+                info@electrolytesolutions.in
+              </a>
+            </li>
+            <li className="footer-contact-item">
+              <i className="ri-map-pin-line"></i>
+              <span>Mumbai, Maharashtra, India</span>
+            </li>
+          </ul>
+        </div>
+
+        {/* Column 2 */}
         <div className="footer-col">
           <h4>Services</h4>
           <ul>
@@ -24,7 +45,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Column 2 - Industries */}
+        {/* Column 3 */}
         <div className="footer-col">
           <h4>Industries</h4>
           <ul>
@@ -43,7 +64,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Column 3 - Company */}
+        {/* Column 4 */}
         <div className="footer-col">
           <h4>Company</h4>
           <ul>

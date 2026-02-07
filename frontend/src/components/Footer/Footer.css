@@ -48,6 +48,32 @@
   padding-left: 5px;
 }
 
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 1rem !important;
+}
+
+.footer-contact-item i {
+  font-size: 1.3rem;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.footer-contact-item span,
+.footer-contact-item a {
+  color: var(--text-body);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-contact-item a:hover {
+  color: var(--primary);
+  padding-left: 0;
+}
+
 .footer-col ul li.highlight {
   color: var(--primary);
   font-weight: 600;
@@ -81,5 +107,14 @@
 
   .footer-col h4 {
     font-size: 1.1rem;
+  }
+
+  .footer-contact-item {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer-contact-item i {
+    font-size: 1.2rem;
   }
 }

@@ -1,191 +1,207 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import "../styles/ExploreServices.css";
 
 const ExploreServices = () => {
+  const [hoveredCard, setHoveredCard] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [autoPlay, setAutoPlay] = useState(true);
-  const autoPlayRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const sectionRef = useRef(null);
 
   const services = [
     {
       id: 1,
-      title: "Product Screening & Repair",
-      description:
-        "Checking products, identifying faults, and repairing them to restore full functionality.",
+      title: "Product Refurbishment",
+      subtitle: "ETN – Equal to New",
+      description: "Restoring damaged or returned units to a like-new condition.",
+      icon: "🔄",
       image: "/images/Services/service-1.jpg",
-      delay: "0s",
+      gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
     },
     {
       id: 2,
-      title: "Product Refurbishment (ETN – Equal to New)",
-      description:
-        "Restoring damaged or returned units to a like-new condition.",
+      title: "Parts Cannibalization",
+      subtitle: "Component Recovery",
+      description: "Harvesting working components from defective/old units to repair other products.",
+      icon: "⚙️",
       image: "/images/Services/service-2.jpg",
-      delay: "0.1s",
+      gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
     },
     {
       id: 3,
-      title: "Parts Cannibalization",
-      description:
-        "Harvesting working components from defective/old units to repair other products.",
+      title: "PCB Level Repair",
+      subtitle: "L2/L3/L4 Diagnostics",
+      description: "Chip-level PCB diagnostics and repair instead of full board replacement.",
+      icon: "🔧",
       image: "/images/Services/service-3.jpg",
-      delay: "0.2s",
+      gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
     },
     {
       id: 4,
-      title: "PCB / Component Level Repair",
-      description:
-        "L2/L3/L4 chip-level PCB diagnostics and repair instead of full board replacement.",
+      title: "Parts Swap Services",
+      subtitle: "Quick Restoration",
+      description: "Replacing non-working parts with new or refurbished parts to quickly restore functionality.",
+      icon: "🔌",
       image: "/images/Services/service-4.jpg",
-      delay: "0.3s",
+      gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
     },
     {
       id: 5,
-      title: "Parts Swap Services",
-      description:
-        "Replacing non-working parts with new or refurbished parts to quickly restore functionality.",
+      title: "Failure Analysis",
+      subtitle: "Root Cause Investigation",
+      description: "Root-cause failure analysis performed on-site or at the facility to prevent repeat issues.",
+      icon: "🔬",
       image: "/images/Services/service-5.jpg",
-      delay: "0.4s",
+      gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
     },
     {
       id: 6,
-      title: "Failure Analysis (FA)",
-      description:
-        "Root-cause failure analysis performed on-site or at the facility to prevent repeat issues.",
+      title: "On-Site Sorting",
+      subtitle: "Warehouse Services",
+      description: "Sorting defective, refurbishable, and scrap items at the client's warehouse.",
+      icon: "📦",
       image: "/images/Services/service-6.jpg",
-      delay: "0.5s",
-    },
-    {
-      id: 7,
-      title: "On-Site Sorting Services",
-      description:
-        "Sorting defective, refurbishable, and scrap items at the client's warehouse.",
-      image: "/images/Services/service-7.jpg",
-      delay: "0.6s",
+      gradient: "linear-gradient(135deg, #30cfd0 0%, #330867 100%)",
     },
   ];
 
-  // Auto-play effect for carousel
   useEffect(() => {
-    if (autoPlay) {
-      autoPlayRef.current = setInterval(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
-      }, 4000);
-    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-in");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
 
-    return () => {
-      if (autoPlayRef.current) clearInterval(autoPlayRef.current);
-    };
-  }, [autoPlay, services.length]);
+    const cards = sectionRef.current?.querySelectorAll(".service-card-3d");
+    cards?.forEach((card) => observer.observe(card));
 
-  const handleCarouselPrev = () => {
-    setCurrentIndex((prevIndex) =>
+    return () => observer.disconnect();
+  }, []);
+
+  // Auto-rotate carousel
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [isPaused, services.length]);
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => 
       prevIndex === 0 ? services.length - 1 : prevIndex - 1
     );
-    setAutoPlay(false);
-    setTimeout(() => setAutoPlay(true), 8000);
+    setIsPaused(true);
+    setTimeout(() => setIsPaused(false), 5000);
   };
 
-  const handleCarouselNext = () => {
+  const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
-    setAutoPlay(false);
-    setTimeout(() => setAutoPlay(true), 8000);
+    setIsPaused(true);
+    setTimeout(() => setIsPaused(false), 5000);
   };
 
-  const getVisibleServices = () => {
-    const visibleCount = 3;
-    const services_list = [];
-    for (let i = 0; i < visibleCount; i++) {
-      services_list.push(services[(currentIndex + i) % services.length]);
-    }
-    return services_list;
+  const getCardPosition = (index) => {
+    const diff = (index - currentIndex + services.length) % services.length;
+    
+    if (diff === 0) return "center";
+    if (diff === 1 || diff === -5) return "right";
+    if (diff === 2 || diff === -4) return "far-right";
+    if (diff === services.length - 1 || diff === -1) return "left";
+    if (diff === services.length - 2 || diff === -2) return "far-left";
+    return "hidden";
   };
 
   return (
     <section
-      id="services-carousel-section"
-      className="bt_bb_section services-carousel-section"
+      ref={sectionRef}
+      id="explore-services-section"
+      className="explore-services-section-3d"
     >
-      <div className="container">
-        <div className="carousel-section-header">
-          <h2 className="carousel-section-title">
-            Explore Our Services
+      <div className="services-container-3d">
+        <div className="services-header-3d">
+          <h2 className="services-title-3d">
+            <span className="title-gradient">Explore Our Services</span>
           </h2>
+          <p className="services-subtitle-3d">
+            Premium solutions engineered for excellence
+          </p>
         </div>
 
-        <div className="circular-carousel-wrapper">
-          <button
-            className="carousel-nav-btn carousel-nav-prev"
-            onClick={handleCarouselPrev}
-            aria-label="Previous services"
-          >
-            <i className="ri-arrow-left-s-line"></i>
-          </button>
-
-          <div className="circular-carousel-container">
-            <div className="carousel-track">
-              {getVisibleServices().map((service, index) => (
+        <div className="services-carousel-wrapper">
+          <div className="services-carousel-3d">
+            {services.map((service, index) => {
+              const position = getCardPosition(index);
+              return (
                 <div
                   key={service.id}
-                  className={`carousel-item ${
-                    index === 1 ? "active" : ""
-                  } ${index === 0 ? "prev" : ""} ${
-                    index === 2 ? "next" : ""
-                  }`}
+                  className={`service-card-3d position-${position}`}
+                  onMouseEnter={() => setHoveredCard(service.id)}
+                  onMouseLeave={() => setHoveredCard(null)}
                 >
-                  <ServiceCarouselCard service={service} />
+                  <div className="card-inner-3d">
+                    <div className="card-glow" style={{ background: service.gradient }} />
+                    
+                    {/* Image Background with Overlay */}
+                    <div className="card-image-wrapper">
+                      <img 
+                        src={service.image} 
+                        alt={service.title}
+                        className="card-image"
+                      />
+                      <div className="card-image-overlay" />
+                    </div>
+                    
+                    <div className="card-content-3d">
+                      <div className="icon-wrapper-3d">
+                        <span className="service-icon-3d">{service.icon}</span>
+                      </div>
+                      
+                      <h3 className="service-title-3d">{service.title}</h3>
+                      <p className="service-subtitle-3d">{service.subtitle}</p>
+                      
+                      <div className="divider-3d" />
+                      
+                      <p className="service-description-3d">{service.description}</p>
+                    </div>
+
+                    {hoveredCard === service.id && (
+                      <div className="particle-container">
+                        {[...Array(20)].map((_, i) => (
+                          <div key={i} className="particle" style={{ "--i": i }} />
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
-              ))}
-            </div>
+              );
+            })}
           </div>
 
+          {/* Navigation Buttons */}
           <button
-            className="carousel-nav-btn carousel-nav-next"
-            onClick={handleCarouselNext}
-            aria-label="Next services"
+            className="service-nav-btn service-nav-prev"
+            onClick={handlePrev}
+            aria-label="Previous service"
           >
-            <i className="ri-arrow-right-s-line"></i>
+            <img src="/images/Home/left_array.png" alt="Previous" />
           </button>
-        </div>
-
-        <div className="carousel-indicators">
-          {services.map((_, index) => (
-            <button
-              key={index}
-              className={`indicator ${
-                index === currentIndex ? "active" : ""
-              }`}
-              onClick={() => {
-                setCurrentIndex(index);
-                setAutoPlay(false);
-                setTimeout(() => setAutoPlay(true), 8000);
-              }}
-              aria-label={`Go to service ${index + 1}`}
-            />
-          ))}
+          <button
+            className="service-nav-btn service-nav-next"
+            onClick={handleNext}
+            aria-label="Next service"
+          >
+            <img src="/images/Home/right_array.png" alt="Next" />
+          </button>
         </div>
       </div>
     </section>
-  );
-};
-
-const ServiceCarouselCard = ({ service }) => {
-  return (
-    <div className="carousel-service-card">
-      <div className="carousel-service-image-wrapper">
-        <img
-          src={service.image}
-          alt={service.title}
-          loading="lazy"
-          className="carousel-service-image"
-        />
-        <div className="carousel-service-overlay" />
-      </div>
-      <div className="carousel-service-content">
-        <h3 className="carousel-service-title">{service.title}</h3>
-        <p className="carousel-service-description">{service.description}</p>
-      </div>
-    </div>
   );
 };
 
