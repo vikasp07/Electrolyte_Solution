@@ -154,7 +154,7 @@ const AboutUs = () => {
           
           <div className="social-icons-container">
             <a
-              href="https://www.instagram.com/electrolytesolutions/"
+              href="https://www.instagram.com/electrolyte07/"
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon-link"

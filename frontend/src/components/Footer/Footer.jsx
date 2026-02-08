@@ -15,8 +15,8 @@ export default function Footer() {
             </li>
             <li className="footer-contact-item">
               <i className="ri-mail-line"></i>
-              <a href="mailto:info@electrolytesolutions.in">
-                info@electrolytesolutions.in
+              <a href="mailto:contact@electrolytesoln.in">
+                contact@electrolytesoln.in
               </a>
             </li>
             <li className="footer-contact-item">
@@ -56,7 +56,7 @@ export default function Footer() {
               <Link to="/clients">Home Appliances</Link>
             </li>
             <li>
-              <Link to="/clients">LED & Power Electronics</Link>
+              <Link to="/clients">LED video wall </Link>
             </li>
             <li>
               <Link to="/clients">IoT Devices</Link>
@@ -66,19 +66,19 @@ export default function Footer() {
 
         {/* Column 4 */}
         <div className="footer-col">
-          <h4>Company</h4>
+          <h4>Other Links</h4>
           <ul>
             <li>
-              <Link to="/about">About Us</Link>
+              <Link to="/blog">Blog</Link>
             </li>
             <li>
-              <Link to="/certifications">Quality & Infrastructure</Link>
+              <Link to="/services">Services</Link>
+            </li>
+            <li>
+              <Link to="/clients">Vendors</Link>
             </li>
             <li>
               <Link to="/contact">Contact</Link>
-            </li>
-            <li>
-              <Link to="/contact">Request Facility Audit</Link>
             </li>
             <li>
               <Link to="/admin/login">Admin Login</Link>
