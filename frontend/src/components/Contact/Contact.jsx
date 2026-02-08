@@ -95,10 +95,10 @@ const Contact = () => {
                         </div>
                         <div className="contact-box">
                           <h4>Email</h4>
-                          <a href="mailto:contact@electrolytesoln.in">contact@electrolytesoln.in</a>
+                          <a href="mailto:contact@electrolytesoln.com">contact@electrolytesoln.com</a>
                           <button
                             className="small-btn"
-                            onClick={() => copyToClipboard("contact@electrolytesoln.in")}
+                            onClick={() => copyToClipboard("contact@electrolytesoln.com")}
                           >
                             Copy
                           </button>
@@ -161,7 +161,7 @@ const Contact = () => {
                           <i className="ri-whatsapp-line"></i>
                           <span>WhatsApp</span>
                         </a>
-                        <a href="mailto:contact@electrolytesoln.in" className="social-card">
+                        <a href="mailto:contact@electrolytesoln.com" className="social-card">
                           <i className="ri-mail-line"></i>
                           <span>Email</span>
                         </a>

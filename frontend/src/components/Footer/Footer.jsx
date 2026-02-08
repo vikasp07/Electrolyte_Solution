@@ -15,8 +15,8 @@ export default function Footer() {
             </li>
             <li className="footer-contact-item">
               <i className="ri-mail-line"></i>
-              <a href="mailto:contact@electrolytesoln.in">
-                contact@electrolytesoln.in
+              <a href="mailto:contact@electrolytesoln.com">
+                contact@electrolytesoln.com
               </a>
             </li>
             <li className="footer-contact-item">
@@ -37,7 +37,7 @@ export default function Footer() {
               <Link to="/services">PCB Refurbishment</Link>
             </li>
             <li>
-              <Link to="/services">Embedded Diagnostics</Link>
+              <Link to="/services">Onset, Service Repair</Link>
             </li>
             <li>
               <Link to="/services">Component-Level Rework</Link>
@@ -75,7 +75,7 @@ export default function Footer() {
               <Link to="/services">Services</Link>
             </li>
             <li>
-              <Link to="/clients">Vendors</Link>
+              <Link to="/clients">Client</Link>
             </li>
             <li>
               <Link to="/contact">Contact</Link>

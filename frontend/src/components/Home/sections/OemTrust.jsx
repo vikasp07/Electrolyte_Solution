@@ -54,7 +54,7 @@ export default function OemTrust() {
           <div className="trust-card">
             <div className="icon">
               <img
-                src="/images/Home/AI-built-data-1.jpg"
+                src="/images/Home/AI-built-data-1.png"
                 alt="Analytics Dashboard"
               />
             </div>
