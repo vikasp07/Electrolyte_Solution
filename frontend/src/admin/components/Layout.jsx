@@ -55,6 +55,26 @@ const Layout = ({ children }) => {
             e.target.style.background = "#FFD400";
             e.target.style.color = "#1a1a2e";
           }}>New Blog</Link>
+          <Link to="/admin/certificates" style={{ 
+            textDecoration: "none",
+            background: "#FFD400",
+            color: "#1a1a2e",
+            padding: "8px 16px",
+            fontWeight: 700,
+            fontSize: "14px",
+            border: "2px solid #FFD400",
+            cursor: "pointer",
+            display: "inline-block",
+            transition: "all 0.2s ease"
+          }}
+          onMouseOver={(e) => {
+            e.target.style.background = "#1a1a2e";
+            e.target.style.color = "#FFD400";
+          }}
+          onMouseOut={(e) => {
+            e.target.style.background = "#FFD400";
+            e.target.style.color = "#1a1a2e";
+          }}>Certificates</Link>
           <Link to="/admin/contact-submissions" style={{ 
             textDecoration: "none",
             background: "#FFD400",

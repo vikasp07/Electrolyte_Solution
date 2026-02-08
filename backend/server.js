@@ -87,6 +87,7 @@ app.use("/api/photos", require("./routes/photos"));
 app.use("/api/sponsors", require("./routes/sponsors"));
 app.use("/api/contact", require("./routes/contact"));
 app.use("/api/blogs", require("./routes/blogs"));
+app.use("/api/certificates", require("./routes/certificates"));
 
 // health check
 app.get("/api/health", (req, res) => res.json({ ok: true, time: new Date() }));

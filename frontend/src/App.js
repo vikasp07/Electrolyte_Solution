@@ -20,6 +20,8 @@ import AdminLogin from "./admin/pages/Login";
 import AdminBlogList from "./admin/pages/BlogList";
 import AdminBlogEditor from "./admin/pages/BlogEditor";
 import AdminContactSubmissions from "./admin/pages/ContactSubmissions";
+import AdminCertificateList from "./admin/pages/CertificateList";
+import AdminCertificateEditor from "./admin/pages/CertificateEditor";
 import { ProtectedRoute } from "./admin/routes";
 
 // Component to handle scroll to top on route change
@@ -80,6 +82,22 @@ function App() {
               element={
                 <ProtectedRoute>
                   <AdminContactSubmissions />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/certificates"
+              element={
+                <ProtectedRoute>
+                  <AdminCertificateList />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/certificates/:id"
+              element={
+                <ProtectedRoute>
+                  <AdminCertificateEditor />
                 </ProtectedRoute>
               }
             />
