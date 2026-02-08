@@ -11,7 +11,7 @@ const COMPANY = {
     "Electrolyte Solutions is a leading provider of advanced electrochemical products and solutions. With years of expertise, we deliver cutting-edge technology to industries worldwide.",
   phonePrimary: "+919892686600",
   phoneSecondary: "+919029352208",
-  email: "contact@electrolytesolin.com",
+  email: "contact@electrolytesoln.in",
   whatsapp: "+919029352208",
   website: "https://www.electrolytesolin.com",
   addressLines: [
