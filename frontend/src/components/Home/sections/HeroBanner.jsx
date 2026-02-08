@@ -6,7 +6,7 @@ const HeroBanner = ({ scrollY }) => {
 
   // Three rotating words with 4.08 seconds display time each
   const rotatingWords = useMemo(() => [
-    "Video Walls",
+    "LED Video Walls",
     "Consumer Electronics",
     "Device Refurbishment",
   ], []);
