@@ -4,21 +4,10 @@ const router = express.Router();
 const Sponsor = require("../models/Sponsor");
 const auth = require("../middleware/auth");
 const multer = require("multer");
-const path = require("path");
-const fs = require("fs");
 
-const uploadsDir = path.join(__dirname, "..", "uploads");
-if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir);
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, uploadsDir),
-  filename: (req, file, cb) => {
-    const unique = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    const ext = path.extname(file.originalname);
-    cb(null, `${unique}${ext}`);
-  },
-});
-const upload = multer({ storage });
+// Import Cloudinary storage
+const { sponsorStorage } = require("../config/cloudinary");
+const upload = multer({ storage: sponsorStorage });
 
 // GET list (public)
 router.get("/", async (req, res) => {
@@ -32,7 +21,7 @@ router.post("/", auth, upload.single("logo"), async (req, res) => {
   let logoUrl, logoFilename;
   if (req.file) {
     logoFilename = req.file.filename;
-    logoUrl = `/uploads/${req.file.filename}`;
+    logoUrl = req.file.path; // Cloudinary URL
   }
   const sponsor = new Sponsor({
     name,
@@ -51,7 +40,7 @@ router.put("/:id", auth, upload.single("logo"), async (req, res) => {
   const update = req.body;
   if (req.file) {
     update.logoFilename = req.file.filename;
-    update.logoUrl = `/uploads/${req.file.filename}`;
+    update.logoUrl = req.file.path; // Cloudinary URL
   }
   if (update.order) update.order = parseInt(update.order, 10);
   const sponsor = await Sponsor.findByIdAndUpdate(req.params.id, update, {

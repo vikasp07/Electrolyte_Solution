@@ -4,23 +4,11 @@ const router = express.Router();
 const Blog = require("../models/Blog");
 const auth = require("../middleware/auth");
 const multer = require("multer");
-const path = require("path");
-const fs = require("fs");
 const slugify = require("../utils/slugify");
 
-// Setup multer storage in /uploads (reuse pattern from photos/sponsors)
-const uploadsDir = path.join(__dirname, "..", "uploads");
-if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir);
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, uploadsDir),
-  filename: (req, file, cb) => {
-    const unique = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    const ext = path.extname(file.originalname);
-    cb(null, `${unique}${ext}`);
-  },
-});
-const upload = multer({ storage });
+// Import Cloudinary storage
+const { blogStorage } = require("../config/cloudinary");
+const upload = multer({ storage: blogStorage });
 
 // Helper: ensure unique slug
 async function ensureUniqueSlug(desired) {
@@ -107,7 +95,7 @@ router.post("/", auth, upload.single("featuredImage"), async (req, res) => {
     if (req.file) {
       featuredImage = {
         filename: req.file.filename,
-        url: `/uploads/${req.file.filename}`,
+        url: req.file.path, // Cloudinary URL
       };
     }
 
@@ -163,16 +151,11 @@ router.put("/:id", auth, upload.single("featuredImage"), async (req, res) => {
 
     // handle featured image replacement
     if (req.file) {
-      // delete old file if exists
-      if (blog.featuredImage && blog.featuredImage.filename) {
-        const oldPath = path.join(uploadsDir, blog.featuredImage.filename);
-        if (fs.existsSync(oldPath)) {
-          try { fs.unlinkSync(oldPath); } catch (e) { console.warn(e); }
-        }
-      }
+      // Cloudinary automatically handles old file deletion if needed
+      // You can optionally delete old Cloudinary image using cloudinary.uploader.destroy()
       update.featuredImage = {
         filename: req.file.filename,
-        url: `/uploads/${req.file.filename}`,
+        url: req.file.path, // Cloudinary URL
       };
     }
 

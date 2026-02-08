@@ -4,22 +4,10 @@ const router = express.Router();
 const Photo = require("../models/Photos");
 const auth = require("../middleware/auth");
 const multer = require("multer");
-const path = require("path");
-const fs = require("fs");
 
-// Setup multer storage in /uploads
-const uploadsDir = path.join(__dirname, "..", "uploads");
-if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir);
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, uploadsDir),
-  filename: (req, file, cb) => {
-    const unique = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    const ext = path.extname(file.originalname);
-    cb(null, `${unique}${ext}`);
-  },
-});
-const upload = multer({ storage });
+// Import Cloudinary storage
+const { photoStorage } = require("../config/cloudinary");
+const upload = multer({ storage: photoStorage });
 
 // GET /api/photos  (public)
 router.get("/", async (req, res) => {
@@ -45,7 +33,7 @@ router.post("/", auth, upload.single("image"), async (req, res) => {
       .status(400)
       .json({ message: "Image required (multipart/form-data name=image)" });
   const { title, description, tags, order, active } = req.body;
-  const url = `/uploads/${req.file.filename}`;
+  const url = req.file.path; // Cloudinary URL
   const photo = new Photo({
     title: title || "",
     description: description || "",
