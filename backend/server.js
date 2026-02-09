@@ -17,16 +17,14 @@ const cors = require("cors");
 // Define allowed origins
 const allowedOrigins = [
   "http://localhost:3000",
-  "http://localhost:3001", 
+  "http://localhost:3001",
   process.env.FRONTEND_URL_DEV,
   process.env.FRONTEND_URL_CODESPACES,
   process.env.FRONTEND_URL_PROD,
   // GitHub Codespaces origin (hardcoded as backup)
   "https://refactored-umbrella-pjqrvww49gwj3rwpp-3000.app.github.dev",
-  // Add your production frontend URL here
-  "https://your-production-domain.com",
-  "https://electrolyte-solutions.netlify.app", // Example if using Netlify
-  "https://electrolyte-solutions.vercel.app",  // Example if using Vercel
+  // Production frontend URL
+  "https://electrolyte-solution-5c6o.vercel.app",
 ].filter(Boolean); // Remove undefined values
 
 // CORS options
@@ -34,12 +32,12 @@ const corsOptions = {
   origin: function (origin, callback) {
     // Allow requests with no origin (like mobile apps, Postman, curl)
     if (!origin) return callback(null, true);
-    
+
     // In development, allow all localhost origins
     if (origin && origin.startsWith("http://localhost")) {
       return callback(null, true);
     }
-    
+
     if (allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {

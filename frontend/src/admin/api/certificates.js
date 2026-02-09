@@ -1,31 +1,22 @@
 // admin/api/certificates.js
-import client from "./client";
+import { apiClient } from "./client";
 
 export const getCertificates = async () => {
-  const res = await client.get("/certificates");
-  return res.data;
+  return await apiClient.get("/certificates");
 };
 
 export const getCertificate = async (id) => {
-  const res = await client.get(`/certificates/${id}`);
-  return res.data;
+  return await apiClient.get(`/certificates/${id}`);
 };
 
 export const createCertificate = async (formData) => {
-  const res = await client.post("/certificates", formData, {
-    headers: { "Content-Type": "multipart/form-data" },
-  });
-  return res.data;
+  return await apiClient.post("/certificates", formData);
 };
 
 export const updateCertificate = async (id, formData) => {
-  const res = await client.put(`/certificates/${id}`, formData, {
-    headers: { "Content-Type": "multipart/form-data" },
-  });
-  return res.data;
+  return await apiClient.put(`/certificates/${id}`, formData);
 };
 
 export const deleteCertificate = async (id) => {
-  const res = await client.delete(`/certificates/${id}`);
-  return res.data;
+  return await apiClient.delete(`/certificates/${id}`);
 };

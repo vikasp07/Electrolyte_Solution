@@ -54,7 +54,10 @@ router.get("/admin", auth, async (req, res) => {
 // Public: GET /api/blogs/:slug -> single published blog by slug
 router.get("/:slug", async (req, res) => {
   try {
-    const blog = await Blog.findOne({ slug: req.params.slug, status: "published" });
+    const blog = await Blog.findOne({
+      slug: req.params.slug,
+      status: "published",
+    });
     if (!blog) return res.status(404).json({ message: "Not found" });
     res.json(blog);
   } catch (err) {
@@ -108,7 +111,15 @@ router.post("/", auth, upload.single("featuredImage"), async (req, res) => {
       source,
       status: status === "published" ? "published" : "draft",
       category,
-      tags: typeof tags === "string" ? tags.split(",").map((t) => t.trim()).filter(Boolean) : Array.isArray(tags) ? tags : [],
+      tags:
+        typeof tags === "string"
+          ? tags
+              .split(",")
+              .map((t) => t.trim())
+              .filter(Boolean)
+          : Array.isArray(tags)
+            ? tags
+            : [],
       metaTitle,
       metaDescription,
       metaKeywords,
@@ -133,7 +144,10 @@ router.put("/:id", auth, upload.single("featuredImage"), async (req, res) => {
 
     const update = { ...req.body };
     if (update.tags && typeof update.tags === "string") {
-      update.tags = update.tags.split(",").map((t) => t.trim()).filter(Boolean);
+      update.tags = update.tags
+        .split(",")
+        .map((t) => t.trim())
+        .filter(Boolean);
     }
 
     // handle slug change with uniqueness
@@ -164,7 +178,9 @@ router.put("/:id", auth, upload.single("featuredImage"), async (req, res) => {
       update.status = update.status === "published" ? "published" : "draft";
     }
 
-    const updated = await Blog.findByIdAndUpdate(req.params.id, update, { new: true });
+    const updated = await Blog.findByIdAndUpdate(req.params.id, update, {
+      new: true,
+    });
     res.json(updated);
   } catch (err) {
     console.error(err);
@@ -177,12 +193,14 @@ router.patch("/:id/status", auth, async (req, res) => {
   try {
     const { status } = req.body;
     if (!status || !["draft", "published"].includes(status)) {
-      return res.status(400).json({ message: "status must be 'draft' or 'published'" });
+      return res
+        .status(400)
+        .json({ message: "status must be 'draft' or 'published'" });
     }
     const updated = await Blog.findByIdAndUpdate(
       req.params.id,
       { status },
-      { new: true }
+      { new: true },
     );
     if (!updated) return res.status(404).json({ message: "Not found" });
     res.json(updated);
@@ -197,10 +215,13 @@ router.delete("/:id", auth, async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id);
     if (!blog) return res.status(404).json({ message: "Not found" });
-    if (blog.featuredImage && blog.featuredImage.filename) {
-      const filePath = path.join(uploadsDir, blog.featuredImage.filename);
-      if (fs.existsSync(filePath)) {
-        try { fs.unlinkSync(filePath); } catch (e) { console.warn(e); }
+    // If using Cloudinary, delete the image by public_id
+    if (blog.featuredImage && blog.featuredImage.public_id) {
+      try {
+        const cloudinary = require("cloudinary").v2;
+        await cloudinary.uploader.destroy(blog.featuredImage.public_id);
+      } catch (e) {
+        console.warn("Failed to delete Cloudinary image:", e);
       }
     }
     await blog.deleteOne();
