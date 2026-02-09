@@ -194,12 +194,12 @@ export default function CertificateEditor() {
         </div>
 
         <div className="form-actions">
-          <button
-            type="submit"
-            className="btn-primary"
-            disabled={loading}
-          >
-            {loading ? "Saving..." : isNew ? "Create Certificate" : "Update Certificate"}
+          <button type="submit" className="btn-primary" disabled={loading}>
+            {loading
+              ? "Saving..."
+              : isNew
+                ? "Create Certificate"
+                : "Update Certificate"}
           </button>
           <button
             type="button"
