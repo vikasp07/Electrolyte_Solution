@@ -1,5 +1,5 @@
 // admin/pages/CertificateEditor.jsx
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
   getCertificate,
@@ -22,13 +22,7 @@ export default function CertificateEditor() {
   const [imagePreview, setImagePreview] = useState("");
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    if (!isNew) {
-      loadCertificate();
-    }
-  }, [id]);
-
-  const loadCertificate = async () => {
+  const loadCertificate = useCallback(async () => {
     try {
       const data = await getCertificate(id);
       setForm({
@@ -44,7 +38,13 @@ export default function CertificateEditor() {
       console.error(err);
       alert("Failed to load certificate");
     }
-  };
+  }, [id]);
+
+  useEffect(() => {
+    if (!isNew) {
+      loadCertificate();
+    }
+  }, [isNew, loadCertificate]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
