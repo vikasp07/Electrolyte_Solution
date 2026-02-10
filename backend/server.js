@@ -102,6 +102,7 @@ app.get("/", (req, res) => {
       sponsors: "/api/sponsors",
       contact: "/api/contact",
       blogs: "/api/blogs",
+      certificates: "/api/certificates",
     },
   });
 });
