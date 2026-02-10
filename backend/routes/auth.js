@@ -9,8 +9,8 @@ router.post("/login", (req, res) => {
   if (!email || !password)
     return res.status(400).json({ message: "Email and password required" });
 
-  const adminEmail = process.env.ADMIN_EMAIL;
-  const adminPassword = process.env.ADMIN_PASSWORD;
+  const adminEmail = process.env.ADMIN_EMAIL || "admin@electrolyte.com";
+  const adminPassword = process.env.ADMIN_PASSWORD || "Admin@123456";
   const adminToken = process.env.ADMIN_TOKEN || "admin-token-12345";
 
   if (
