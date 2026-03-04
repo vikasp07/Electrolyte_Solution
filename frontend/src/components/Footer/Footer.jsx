@@ -37,7 +37,7 @@ export default function Footer() {
               <Link to="/services">PCB Refurbishment</Link>
             </li>
             <li>
-              <Link to="/services">Onset, Service Repair</Link>
+              <Link to="/services">Onsite Service Repair</Link>
             </li>
             <li>
               <Link to="/services">Component-Level Rework</Link>
