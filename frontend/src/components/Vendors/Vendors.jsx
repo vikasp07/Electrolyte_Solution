@@ -39,13 +39,6 @@ const clientData = [
     ],
   },
   {
-    name: "Carnot Technologies",
-    category: "Automotive Telematics PCBs",
-    logo: "/images/Vendors/carnot_Logo.png",
-    website: "https://carnot.co.in",
-    services: ["L1/L2 PCB repair", "Telematics diagnostics"],
-  },
-  {
     name: "Anchor by Panasonic",
     category: "Electrical Switches, Wiring Devices",
     logo: "/images/Vendors/Anchor_by_Panasonic_logo.png",
